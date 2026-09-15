@@ -53,8 +53,14 @@
   <label for="display-name">Display name</label>
   <input id="display-name" type="text" value="Jordan Lee">
 
-  <!-- Tier 1: label — placeholder-only input, no associated label/aria-label -->
+  <!-- Illustrative only: axe's accessible-name computation treats `placeholder` as a
+       valid name source, so this never actually gets flagged by the "label" rule
+       despite being poor UX practice — see AUTO_FIX_TEST_MATRIX.md. -->
   <input type="text" class="search-input" placeholder="Search your orders">
+
+  <!-- Tier 1: label — genuinely nameless input (no placeholder/label/aria-label),
+       the case axe's "label" rule actually flags -->
+  <input type="text" class="quantity-input">
 
   <fieldset class="form-section">
     <legend>Billing details</legend>
