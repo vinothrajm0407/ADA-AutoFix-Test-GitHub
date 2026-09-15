@@ -20,8 +20,8 @@
   .toolbar button svg { fill: #cbd5e1; }
   .secondary-section { margin-top: 28px; padding: 16px; background: #161a22; border-radius: 10px; }
   .site-footer { margin-top: 40px; padding: 20px 24px; background: #161a22; }
-  /* Tier 1: color-contrast — nav-link class fails WCAG AA against this background */
-  .muted-link { color: #55607a; }
+  /* Tier 1: color-contrast — helper-text class fails WCAG AA against the dark page background */
+  .helper-text { color: #3f4655; }
 </style>
 </head>
 <body>
@@ -32,7 +32,7 @@
     <a href="index.html">Dashboard</a>
     <a href="profile.html">Profile</a>
     <a href="contact.html">Contact</a>
-    <a href="#" class="muted-link">Docs</a>
+    <a href="#">Docs</a>
   </nav>
   <!-- Tier 2 #7 (1 of 4): duplicated icon-button in the header -->
   <button class="header-icon-btn">
@@ -50,6 +50,8 @@
     </svg>
     <span>All systems operational</span>
   </div>
+
+  <p class="helper-text">Last synced automatically a few moments ago</p>
 
   <div class="toolbar">
     <!-- Tier 1: button-name — icon-only button identified only by id, no text/aria-label -->
