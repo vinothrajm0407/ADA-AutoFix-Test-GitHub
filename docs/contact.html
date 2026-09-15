@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Northwind Dashboard</title>
+<style>
+  body { margin: 0; font-family: -apple-system, Segoe UI, Arial, sans-serif; background: #0f1115; color: #e5e7eb; }
+  .site-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; background: #161a22; }
+  .brand { font-weight: 700; font-size: 18px; }
+  nav.main-nav a { color: #cbd5e1; text-decoration: none; margin-left: 20px; }
+  .contact-section { padding: 32px 24px; max-width: 520px; }
+  .fav-btn { background: #1b202b; border: 1px solid #2a3140; border-radius: 6px; padding: 8px 10px; }
+  .icon-wrap svg { fill: #cbd5e1; }
+  textarea { width: 100%; min-height: 100px; margin-top: 16px; border-radius: 6px; border: 1px solid #2a3140; background: #1b202b; color: #e5e7eb; padding: 8px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">Northwind</div>
+  <nav class="main-nav">
+    <a href="index.html">Dashboard</a>
+    <a href="profile.html">Profile</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="contact-section">
+  <h1>Contact us</h1>
+  <!-- Tier 1: heading-order — top-level skip, h1 straight to h3, no h2 -->
+  <h3>Send a message</h3>
+
+  <p>Have a question about your order? Reach out and we'll get back to you.</p>
+
+  <label for="message">Message</label>
+  <textarea id="message"></textarea>
+
+  <p>
+    <button class="fav-btn">
+      <!-- Tier 2 #3: button -> span -> svg, multi-level ancestor scoping -->
+      <span class="icon-wrap">
+        <svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6"></circle></svg>
+      </span>
+    </button>
+    Save to favorites
+  </p>
+</main>
+
+</body>
+</html>

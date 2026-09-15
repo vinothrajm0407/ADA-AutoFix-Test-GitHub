@@ -1,0 +1,76 @@
+<!doctype html>
+<!-- Tier 1: html-has-lang — this page's <html> tag intentionally has no lang attribute -->
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profile — Northwind Dashboard</title>
+<style>
+  body { margin: 0; font-family: -apple-system, Segoe UI, Arial, sans-serif; background: #0f1115; color: #e5e7eb; }
+  .site-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; background: #161a22; }
+  .brand { font-weight: 700; font-size: 18px; }
+  nav.main-nav a { color: #cbd5e1; text-decoration: none; margin-left: 20px; }
+  .profile-section { padding: 32px 24px; max-width: 520px; }
+  .social-row { display: flex; gap: 12px; margin: 16px 0; }
+  .social-row a { display: inline-flex; width: 32px; height: 32px; border-radius: 50%; background: #1b202b; }
+  .alert-banner { display: flex; align-items: center; gap: 8px; padding: 12px; background: #241a1a; border-radius: 8px; margin: 16px 0; }
+  fieldset.form-section { border: 1px solid #2a3140; border-radius: 8px; padding: 16px; margin-top: 20px; }
+  .field-wrapper { margin-bottom: 12px; }
+  .field-wrapper input { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #2a3140; background: #0f1115; color: #e5e7eb; }
+  .custom-checkbox { display: inline-block; width: 18px; height: 18px; border: 2px solid #94a3b8; border-radius: 4px; margin-right: 8px; vertical-align: middle; cursor: pointer; }
+  .fav-btn { background: #1b202b; border: 1px solid #2a3140; border-radius: 6px; padding: 8px 10px; }
+  .icon-wrap svg { fill: #cbd5e1; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">Northwind</div>
+  <nav class="main-nav">
+    <a href="index.html">Dashboard</a>
+    <a href="profile.html">Profile</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="profile-section">
+  <h1>Your profile</h1>
+
+  <div class="alert-banner">
+    <!-- Tier 2 #2: svg with a nested <path>, aria-hidden="false" (svg-img-alt, nested markup) -->
+    <svg class="alert-icon" aria-hidden="false" width="20" height="20" viewBox="0 0 20 20">
+      <path d="M10 2 L2 18 L18 18 Z"></path>
+    </svg>
+    <span>Two-factor authentication is not enabled</span>
+  </div>
+
+  <p>Follow us:</p>
+  <div class="social-row">
+    <!-- Tier 1: link-name — empty anchor, no text/aria-label -->
+    <a href="https://twitter.com/northwind" class="social-link"></a>
+  </div>
+
+  <label for="display-name">Display name</label>
+  <input id="display-name" type="text" value="Jordan Lee">
+
+  <!-- Tier 1: label — placeholder-only input, no associated label/aria-label -->
+  <input type="text" class="search-input" placeholder="Search your orders">
+
+  <fieldset class="form-section">
+    <legend>Billing details</legend>
+    <div class="field-wrapper">
+      <!-- Tier 2 #5: placeholder-based label, nested inside fieldset > div -->
+      <input type="email" class="email-field" placeholder="you@example.com">
+    </div>
+  </fieldset>
+
+  <p>
+    <!-- Tier 2 #4: role=checkbox missing aria-required-attr (aria-checked) — intentionally
+         NOT in RULES_WITH_FALLBACK, expected to fail safe with a manual-review result -->
+    <span class="custom-checkbox" role="checkbox" tabindex="0"></span>
+    Accept the updated terms of service
+  </p>
+</main>
+
+</body>
+</html>

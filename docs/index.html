@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Northwind Dashboard</title>
+<style>
+  body { margin: 0; font-family: -apple-system, Segoe UI, Arial, sans-serif; background: #0f1115; color: #e5e7eb; }
+  .site-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; background: #161a22; }
+  .brand { font-weight: 700; font-size: 18px; }
+  nav.main-nav a { color: #cbd5e1; text-decoration: none; margin-left: 20px; }
+  .dashboard { padding: 32px 24px; }
+  .status-row { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .card { background: #1b202b; border-radius: 10px; padding: 18px; }
+  .card img { width: 100%; border-radius: 6px; }
+  .card .price { color: #94a3b8; font-size: 14px; }
+  .toolbar { display: flex; gap: 10px; margin: 20px 0; }
+  .toolbar button { background: #1b202b; border: 1px solid #2a3140; border-radius: 6px; padding: 8px 10px; cursor: pointer; }
+  .toolbar button svg { fill: #cbd5e1; }
+  .secondary-section { margin-top: 28px; padding: 16px; background: #161a22; border-radius: 10px; }
+  .site-footer { margin-top: 40px; padding: 20px 24px; background: #161a22; }
+  /* Tier 1: color-contrast — nav-link class fails WCAG AA against this background */
+  .muted-link { color: #55607a; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">Northwind</div>
+  <nav class="main-nav">
+    <a href="index.html">Dashboard</a>
+    <a href="profile.html">Profile</a>
+    <a href="contact.html">Contact</a>
+    <a href="#" class="muted-link">Docs</a>
+  </nav>
+  <!-- Tier 2 #7 (1 of 4): duplicated icon-button in the header -->
+  <button class="header-icon-btn">
+    <svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="16" rx="2"></rect></svg>
+  </button>
+</header>
+
+<main class="dashboard">
+  <h1>Product dashboard</h1>
+
+  <div class="status-row">
+    <!-- Tier 1: svg-img-alt — standalone status icon svg with role=img, no accessible name -->
+    <svg class="status-icon" role="img" width="20" height="20" viewBox="0 0 20 20">
+      <circle cx="10" cy="10" r="9" fill="#22c55e"></circle>
+    </svg>
+    <span>All systems operational</span>
+  </div>
+
+  <div class="toolbar">
+    <!-- Tier 1: button-name — icon-only button identified only by id, no text/aria-label -->
+    <button id="menu-toggle"></button>
+
+    <!-- Tier 2 #1: SVG inside a uniquely-classed button, svg itself classless (ancestor-scoped) -->
+    <button class="download-btn">
+      <svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="16"></rect></svg>
+    </button>
+
+    <!-- Tier 2 #6: classless button wrapping a capitalized custom-component-styled icon -->
+    <button><DownloadIcon></DownloadIcon></button>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <!-- Tier 1: image-alt — product image with no alt attribute at all -->
+      <img src="https://picsum.photos/seed/nw1/300/180">
+      <h3>Trail runner jacket</h3>
+      <div class="price">$88.00</div>
+      <!-- Tier 2 #7 (2 of 4): duplicated icon-button in a card -->
+      <button class="card-icon-btn">
+        <svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="16" rx="2"></rect></svg>
+      </button>
+    </div>
+
+    <div class="card feature-card">
+      <!-- Tier 2 #8: heading-order skip nested inside a card component (h1 -> h4) -->
+      <h1>Feature spotlight</h1>
+      <h4>Bundle and save on outerwear</h4>
+      <p class="price">Limited-time bundle pricing</p>
+    </div>
+  </div>
+
+  <section class="secondary-section">
+    <p>Recently viewed</p>
+    <!-- Tier 2 #7 (3 of 4): duplicated icon-button in a secondary section -->
+    <button class="secondary-icon-btn">
+      <svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="16" rx="2"></rect></svg>
+    </button>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; 2026 Northwind</p>
+  <!-- Tier 2 #7 (4 of 4): duplicated icon-button in the footer -->
+  <button class="footer-icon-btn">
+    <svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="16" rx="2"></rect></svg>
+  </button>
+</footer>
+
+</body>
+</html>
