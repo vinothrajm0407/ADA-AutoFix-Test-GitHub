@@ -19,7 +19,8 @@
   table { border-collapse:collapse; width:100%; margin-top:10px; }
   th, td { border:1px solid #e1e3e6; padding:6px 10px; text-align:left; font-size:13px; }
   .tiny-target { display:inline-block; width:10px; height:10px; background:#2454a8; border-radius:2px; }
-  .scrollbox { height:70px; overflow:auto; border:1px solid #e1e3e6; padding:8px; font-size:12px; }
+  .scrollbox { height:70px; overflow-y:scroll; border:1px solid #e1e3e6; padding:8px; font-size:12px; }
+  .visually-tiny { position:absolute; width:1px; height:1px; overflow:hidden; }
   footer { text-align:center; padding:20px; font-size:12px; color:#8a8f98; }
 </style>
 </head>
@@ -35,8 +36,9 @@
 
 <div class="wrap">
 
-  <!-- image-alt: informative image with no alt text -->
-  <img src="https://via.placeholder.com/300x120.png?text=Weekly+Report" width="300" height="120">
+  <!-- image-alt: informative image with no alt text.
+       aria-allowed-attr: img also carries an aria attribute not allowed on its role. -->
+  <img src="https://via.placeholder.com/300x120.png?text=Weekly+Report" width="300" height="120" aria-checked="true">
 
   <div class="card">
     <h2>Team performance</h2>
@@ -70,6 +72,12 @@
 
     <!-- target-size: isolated clickable element far under the 24x24 CSS px minimum -->
     <p>Mark reviewed <a href="#ack" class="tiny-target" aria-label="Acknowledge"></a></p>
+
+    <!-- tabindex: positive tabindex value disrupts natural focus order -->
+    <button tabindex="3">Refresh</button>
+
+    <!-- aria-valid-attr-value: aria-expanded set to a non-boolean token -->
+    <button aria-expanded="perhaps">Toggle filters</button>
   </div>
 
   <div class="card">
@@ -111,6 +119,15 @@
 
     <!-- nested-interactive: interactive element nested inside another -->
     <button id="nested-btn"><a href="#details">View details</a></button>
+
+    <!-- aria-roles: invalid/nonexistent ARIA role value -->
+    <div role="statuscard">Sync complete</div>
+
+    <!-- aria-required-parent: role requires a specific parent context it doesn't have here -->
+    <div role="option">Preview theme</div>
+
+    <!-- aria-hidden-focus: a focusable control left inside an aria-hidden container -->
+    <div aria-hidden="true" class="visually-tiny"><button>Hidden but still focusable</button></div>
   </div>
 
   <div class="card">
@@ -145,6 +162,9 @@
 
     <!-- video-caption: no track kind=captions -->
     <video controls width="300"><source src="demo.mp4" type="video/mp4"></video>
+
+    <!-- landmark-unique: a second, indistinguishable navigation landmark -->
+    <nav><a href="#top">Back to top</a></nav>
   </div>
 
 </div>
